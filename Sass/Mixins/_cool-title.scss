@@ -1,0 +1,72 @@
+@use '../Colors/colors'as*;
+@mixin cool-title($color) {
+    padding: 15px 40px;
+    color: $color;
+    width: fit-content;
+    margin: 0 auto 70px;
+    border: 2px solid;
+    position: relative;
+    z-index: 11;
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: $color;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .3s all ease-in-out;
+    }
+    &::before {
+        left: -40px;
+    }
+    &::after {
+        right: -40px;
+    }
+    &:hover {
+        color: #fff;
+        border: 2px solid #fff;
+        transition-delay: .5s;
+    }
+    &:hover::before {
+        animation: left-circle .5s ease-in-out forwards;
+        z-index: -1;
+    }
+    &:hover::after {
+        animation: right-circle .5s ease-in-out forwards;
+        z-index: -1;
+    }
+}
+
+// ==> Animations <==
+@keyframes left-circle {
+    0% {
+        left: -40px;
+    }
+    50% {
+        left: 0;
+    }
+    100% {
+        left: 0;
+        width: 60%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+@keyframes right-circle {
+    0% {
+        right: -40px;
+    }
+    50% {
+        right: 0;
+    }
+    100% {
+        right: 0;
+        width: 50%;
+        height: 100%;
+        border-radius: 0;
+    }
+}

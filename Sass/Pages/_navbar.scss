@@ -1,0 +1,144 @@
+@use '../Colors/colors'as*;
+.navbar {
+    background: $gradient-bg;
+    border-bottom: 2px solid $yellow;
+    padding: 20px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        position: relative;
+        .navbar__logo {
+            letter-spacing: 1px;
+            color: $yellow
+        }
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .link {
+                cursor: pointer;
+                letter-spacing: 2px;
+                padding: 10px;
+                border-radius: 10px;
+                &:hover,
+                &.active {
+                    background-color: #fff;
+                    color: $yellow;
+                }
+            }
+            .other-links {
+                .close-btn {
+                    text-align: right;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #fff;
+                    color: $yellow;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    margin: 0 0 0 auto;
+                    position: absolute;
+                    top: 9px;
+                    right: 9px;
+                }
+                position: absolute;
+                z-index: 1000 !important;
+                pointer-events: none;
+                opacity: 0;
+                background: $gradient-bg;
+                display: flex;
+                top: 71px;
+                right: 0;
+                padding: 20px;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                transition: .5s all ease-in-out;
+                .other-links__link {
+                    position: relative;
+                    cursor: pointer;
+                    letter-spacing: 2px;
+                    padding: 10px;
+                    display: flex;
+                    gap: 4px;
+                    align-items: center;
+                    margin-bottom: 5px;
+                    svg {
+                        font-size: 22px;
+                        font-weight: 900;
+                        color: $yellow;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 1px;
+                        background-color: $yellow;
+                        transition: .3s all ease-in-out;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+            }
+            .other-links.show {
+                opacity: 1;
+                pointer-events: auto;
+                top: 61px;
+            }
+        }
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:767px) {
+    .navbar {
+        .container {
+            flex-direction: column;
+            .navbar__logo {
+                margin-bottom: 20px;
+            }
+            .navbar__links {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                width: 100%;
+                justify-content: space-between;
+                .link {
+                    font-size: 11px;
+                    padding: 4px;
+                }
+                .other-links {
+                    ul {
+                        width: 100%;
+                    }
+                    top: 101px;
+                    gap: 0;
+                    flex-direction: column;
+                    align-items: center;
+                    .other-links__link {
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+                }
+                .other-links__image {
+                    display: none;
+                }
+                .other-links.show {
+                    top: 91px;
+                    height: 80vh;
+                    justify-content: flex-start;
+                }
+            }
+        }
+    }
+}

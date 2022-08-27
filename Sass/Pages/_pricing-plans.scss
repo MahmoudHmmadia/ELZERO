@@ -1,0 +1,136 @@
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+@use '../Colors/colors'as*;
+.pricing-plans {
+    .container {
+        .pricing-plans__boxes {
+            @include grid(300px);
+            .box {
+                padding: 30px;
+                position: relative;
+                background-color: $grey-bg;
+                box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+                overflow: hidden;
+                z-index: 1;
+                .title {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: $green;
+                }
+                .icon {
+                    font-size: 100px;
+                    color: $blue;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+                .number {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: $blue;
+                    font-size: 60px;
+                }
+                .text {
+                    font-size: 14px;
+                    text-align: center;
+                    color: #777;
+                    margin-bottom: 20px;
+                }
+                .list {
+                    margin-bottom: 20px;
+                    li {
+                        padding: 15px 0;
+                        position: relative;
+                        svg {
+                            margin-right: 10px;
+                            color: $green;
+                        }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -40px;
+                            width: 200%;
+                            height: 1px;
+                            background-color: #fff;
+                        }
+                    }
+                }
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: 50%;
+                    width: 0;
+                    transition: .3s all ease-in-out;
+                    background-color: #fff;
+                    z-index: -1;
+                    opacity: .2;
+                }
+                &::before {
+                    top: 0;
+                    left: 0;
+                }
+                &::after {
+                    top: 50%;
+                    right: 0;
+                }
+                &:hover {
+                    &::before,
+                    &::after {
+                        width: 100%;
+                    }
+                }
+                button {
+                    padding: 10px 30px;
+                    border: 1px solid $green;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    letter-spacing: 2px;
+                    margin: 0 auto;
+                    display: block;
+                    color: $green;
+                    &:hover {
+                        background-color: $green;
+                        color: #fff;
+                    }
+                }
+            }
+            .box:nth-child(2) {
+                transform: translateY(-25px);
+                .label {
+                    position: absolute;
+                    top: 0;
+                    right: 20px;
+                    padding: 30px 10px;
+                    background-color: $blue;
+                    color: #fff;
+                    writing-mode: vertical-rl;
+                    letter-spacing: 1px;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -1px;
+                        border: 20px solid;
+                        border-color: transparent transparent $grey-bg;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:1191px) {
+    .pricing-plans {
+        .container {
+            .pricing-plans__boxes {
+                .box:nth-child(2) {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

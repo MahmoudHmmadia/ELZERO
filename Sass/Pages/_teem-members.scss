@@ -1,0 +1,80 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+.teem-members {
+    .container {
+        .teem-members__boxes {
+            @include grid(300px);
+            gap: 40px;
+            .box {
+                padding: 25px;
+                position: relative;
+                .social {
+                    display: flex;
+                    gap: 15px;
+                    img {
+                        border-radius: 8px;
+                        z-index: 2;
+                        margin-bottom: 20px;
+                    }
+                    .social-links {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 20px;
+                    }
+                }
+                .content {
+                    margin-left: 35%;
+                    position: relative;
+                    z-index: 2;
+                    .name {
+                        margin-bottom: 20px;
+                        font-weight: 900;
+                    }
+                    .info {
+                        margin-bottom: 20px;
+                        @include text;
+                        font-size: 14px;
+                    }
+                }
+                &::after,
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    top: -25px;
+                    opacity: 0.2;
+                    border-radius: 18px;
+                    transition: .3s all ease-in-out;
+                }
+                &::after {
+                    background-color: #ffc210;
+                    width: 80%;
+                    left: 30%;
+                }
+                &::before {
+                    width: 0;
+                    left: 100%;
+                    background-color: $grey-bg
+                }
+                &:hover {
+                    .social {
+                        img {
+                            filter: grayscale(100%);
+                        }
+                    }
+                    .content {
+                        .name {
+                            color: gray;
+                        }
+                    }
+                    &::before {
+                        width: 80%;
+                        left: 30%;
+                    }
+                }
+            }
+        }
+    }
+}

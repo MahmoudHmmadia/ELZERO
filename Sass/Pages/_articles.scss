@@ -1,0 +1,70 @@
+@use '../Mixins/text'as*;
+@use '../Mixins/grid-template'as*;
+@use '../Colors/colors'as*;
+.articles {
+    .container {
+        .articles__boxes {
+            @include grid(250px);
+            .box {
+                background-color: #fff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+                transform: translateY(0);
+                .stuff {
+                    padding: 20px;
+                    .title {
+                        margin-bottom: 10px;
+                        color: $yellow;
+                    }
+                    .info {
+                        color: $text;
+                        margin-bottom: 30px;
+                        letter-spacing: 1px;
+                        line-height: 1.4;
+                        font-size: 13px;
+                    }
+                    .more-info {
+                        position: relative;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        span {
+                            color: $blue;
+                            font-weight: bold;
+                        }
+                        svg {
+                            color: $yellow;
+                        }
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 200%;
+                            height: 1px;
+                            background: $grey-bg;
+                            top: -20px;
+                            left: -20px;
+                        }
+                    }
+                }
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+                    & .more-info svg {
+                        animation: arrow-dancing linear .7s infinite;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ==> Animations <==
+@keyframes arrow-dancing {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(10px);
+    }
+}

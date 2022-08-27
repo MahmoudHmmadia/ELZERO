@@ -1,0 +1,83 @@
+@use '../Mixins/grid-template'as*;
+@use '../Colors/colors'as*;
+.top-videos {
+    .container {
+        .top-videos__boxes {
+            display: flex;
+            .box:nth-child(1) {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                width: 35%;
+                .head {
+                    padding: 20px 30px;
+                    display: flex;
+                    justify-content: space-between;
+                    background-color: $grey-bg;
+                    p {
+                        letter-spacing: 1px;
+                        font-weight: bold;
+                    }
+                    svg {
+                        color: $blue;
+                        cursor: pointer;
+                    }
+                }
+                .body {
+                    li {
+                        padding: 20px 30px;
+                        border-top: 1px solid $grey-bg;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        cursor: pointer;
+                        .info {
+                            font-size: 14px;
+                            letter-spacing: 1px;
+                        }
+                        .time {
+                            color: $yellow;
+                        }
+                        &:hover {
+                            background-color: $grey-bg;
+                        }
+                    }
+                }
+            }
+            .box:nth-child(2) {
+                background-color: $grey-bg;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 10px;
+                .discription {
+                    padding: 15px 30px;
+                    background-color: #fff;
+                    color: $yellow;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:991px) {
+    .top-videos {
+        .container {
+            .top-videos__boxes {
+                flex-direction: column;
+                .box:nth-child(1) {
+                    width: 100%;
+                    order: 2;
+                }
+                .box:nth-child(2) {
+                    background-color: #fff;
+                    img {
+                        margin-bottom: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

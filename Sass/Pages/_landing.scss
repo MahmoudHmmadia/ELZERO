@@ -1,0 +1,61 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/text'as*;
+.landing {
+    min-height: calc(100vh - 83px);
+    .container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .landing__info {
+            flex-basis: 100%;
+            h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                .special {
+                    color: $blue;
+                }
+            }
+            .text {
+                @include text;
+            }
+        }
+    }
+    .chape {
+        width: 108%;
+        height: 300px;
+        position: absolute;
+        background: linear-gradient(90deg, #49dcb6 0%, #49bef1);
+        bottom: -180px;
+        left: 0px;
+        transform: rotate(-8deg);
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:767px) {
+    .landing {
+        min-height: calc(100vh - 120px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .container {
+            .landing__info {
+                text-align: center;
+                .text {
+                    color: #000;
+                }
+            }
+            .landing__image {
+                display: none;
+                img {
+                    position: absolute;
+                    left: 0;
+                    pointer-events: none;
+                    opacity: .3;
+                }
+            }
+        }
+    }
+}

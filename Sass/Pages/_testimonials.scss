@@ -1,0 +1,48 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+.testimonials {
+    .container {
+        .testimonials__boxes {
+            @include grid(300px);
+            .box {
+                position: relative;
+                background-color: $grey-bg;
+                box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+                padding: 25px;
+                border-radius: 8px;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    position: absolute;
+                    top: -40px;
+                    right: 0;
+                    border-radius: 50%;
+                    border: 10px solid #fff;
+                }
+                .name {
+                    margin-bottom: 15px;
+                    color: $blue;
+                    font-weight: 900;
+                }
+                .title {
+                    color: $green;
+                    margin-bottom: 15px;
+                    display: block;
+                }
+                .rate {
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    li {
+                        color: $yellow
+                    }
+                }
+                .info {
+                    @include text;
+                    line-height: 1.3;
+                }
+            }
+        }
+    }
+}

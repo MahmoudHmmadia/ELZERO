@@ -1,0 +1,52 @@
+@use '../Mixins/grid-template'as*;
+@use '../Colors/colors'as*;
+.our-skills {
+    .container {
+        .our-skills__boxes {
+            @include grid(300px);
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        .box {
+            .skill {
+                margin-bottom: 20px;
+                .name {
+                    margin-bottom: 10px;
+                    letter-spacing: -1px;
+                    color: #fff;
+                }
+                .progress {
+                    width: 100%;
+                    height: 25px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    &>div {
+                        position: relative;
+                        background-color: $yellow;
+                        height: 100%;
+                        width: 0;
+                        &::before {
+                            content: attr(data-progress);
+                            position: absolute;
+                            top: -45px;
+                            right: 0;
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 50% 50% 0;
+                            background-color: #ffc210;
+                            color: $blue;
+                            line-height: 30px;
+                            padding: 20px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 12px;
+                            font-weight: 900;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

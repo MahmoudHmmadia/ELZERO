@@ -1,0 +1,147 @@
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+@use '../Colors/colors'as*;
+footer {
+    padding-bottom: 0 !important;
+    .container {
+        .footer__boxes {
+            margin-bottom: 30px;
+            @include grid(250px);
+            gap: 30px;
+            // align-items: center;
+            .box {
+                .logo {
+                    color: $yellow;
+                    margin-bottom: 20px;
+                    font-size: 40px;
+                }
+                .social {
+                    display: flex;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                    li {
+                        padding: 7px;
+                        cursor: pointer;
+                        svg {
+                            font-size: 30px;
+                            &.facebook {
+                                color: #4267B2;
+                            }
+                            &.instagram {
+                                color: #cd486b;
+                            }
+                            &.github {
+                                color: #171515;
+                            }
+                        }
+                        &.facebook-container:hover {
+                            background-color: #4267B2;
+                            svg {
+                                color: #Fff;
+                            }
+                        }
+                        &.instagram-container:hover {
+                            background-color: #cd486b;
+                            svg {
+                                color: #Fff;
+                            }
+                        }
+                        &.github-container:hover {
+                            background-color: #171515;
+                            svg {
+                                color: #Fff;
+                            }
+                        }
+                    }
+                }
+                .info {
+                    @include text;
+                    color: #Fff;
+                }
+                .links {
+                    li {
+                        padding: 10px 10px 10px 0;
+                        margin-bottom: 20px;
+                        color: #fff;
+                        position: relative;
+                        cursor: pointer;
+                        font-weight: bold;
+                        display: flex;
+                        &:not(:last-child) {
+                            border-bottom: 1px solid;
+                        }
+                        svg {
+                            color: $yellow;
+                            margin-right: 8px;
+                        }
+                        span {
+                            display: block;
+                        }
+                        &:hover {
+                            span {
+                                transform: translateX(10px);
+                            }
+                        }
+                    }
+                }
+                .address {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    li {
+                        margin-bottom: 20px;
+                        width: 100%;
+                        display: flex;
+                        gap: 10px;
+                        pad: 20px;
+                        color: #fff;
+                        svg {
+                            color: $yellow;
+                            font-size: 22px;
+                        }
+                        div {
+                            text-align: start;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .finale {
+        text-align: center;
+        color: #fff;
+        border-top: 1px solid;
+        padding: 30px;
+        font-weight: bold;
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:767px) {
+    footer {
+        text-align: center;
+        .container {
+            .footer__boxes {
+                .box {
+                    .social {
+                        justify-content: center;
+                    }
+                    .links {
+                        li {
+                            justify-content: center;
+                        }
+                    }
+                    .address {
+                        li {
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+@use '../Colors/colors'as*;
+.how-it-works {
+    .container {
+        .how-it-works__boxes {
+            @include grid(300px);
+            gap: 40px;
+            align-items: center;
+            .box {
+                .item {
+                    display: flex;
+                    border-radius: 8px;
+                    border: 1px solid $yellow;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    background-color: $grey-bg;
+                    position: relative;
+                    z-index: 1;
+                    .icon {
+                        font-size: 30px;
+                        color: $blue;
+                    }
+                    .info {
+                        h3 {
+                            font-weight: 900;
+                            color: $green;
+                            margin-bottom: 20px
+                        }
+                        p {
+                            @include text;
+                        }
+                    }
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        left: 50%;
+                        top: 50%;
+                        background-color: #fff;
+                        opacity: .2;
+                        transform: translate(-50%, -50%);
+                        transition: .3s all ease-in-out;
+                    }
+                    &:hover::before {
+                        width: 100%;
+                        height: 100%;
+                        z-index: 0;
+                    }
+                }
+            }
+        }
+    }
+}

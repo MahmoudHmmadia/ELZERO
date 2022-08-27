@@ -1,0 +1,77 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/grid-template'as*;
+.services {
+    .container {
+        .services__boxes {
+            @include grid(300px);
+            gap: 40px;
+            .box {
+                box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+                padding: 30px 30px 0;
+                background-color: $grey-bg;
+                position: relative;
+                .icon {
+                    font-size: 75px;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: $blue;
+                }
+                .title {
+                    color: $yellow;
+                    margin-bottom: 80px;
+                    text-align: center;
+                }
+                .content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: absolute;
+                    bottom: 0;
+                    background-color: #fff;
+                    left: 0;
+                    width: 100%;
+                    .number {
+                        position: relative;
+                        padding: 15px 35px;
+                        font-weight: 900;
+                        font-size: 25px;
+                        background-color: $green;
+                        color: #fff;
+                        z-index: 2;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            background-color: $blue;
+                            top: 0;
+                            right: -31px;
+                            width: 50px;
+                            height: calc(100% + 0.4px);
+                            transform: skewX(-30deg);
+                        }
+                    }
+                    .details {
+                        padding: 0 15px;
+                        color: $yellow;
+                    }
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    height: 2px;
+                    background-color: $yellow;
+                    width: 0;
+                    transform: translateX(-50%);
+                    transition: .3s all ease-in-out;
+                }
+                &:hover {
+                    transform: translateY(-15px);
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/text'as*;
+.discount {
+    min-height: 100vh;
+    display: flex;
+    gap: 30px;
+    .image-box {
+        flex-basis: 50%;
+        padding: 100px 50px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url('../../Assits/discount-background2.jpg');
+        position: relative;
+        z-index: 1;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $gradient-bg;
+            opacity: .98;
+            z-index: -1;
+        }
+        .title {
+            letter-spacing: -1px;
+            color: $yellow;
+            margin-bottom: 30px;
+            font-size: 35px
+        }
+        .info {
+            @include text;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        img {
+            width: 500px;
+        }
+    }
+    .form-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 50px;
+        flex: 1;
+        h1 {
+            letter-spacing: -1px;
+            color: $blue;
+            margin-bottom: 30px;
+            font-size: 35px
+        }
+        .input-container {
+            margin-bottom: 30px;
+            position: relative;
+            width: 50%;
+            input,
+            textarea {
+                width: 100%;
+                padding: 15px 4px;
+                border: none;
+                outline: none;
+                background: #f6f6f6;
+                resize: none;
+            }
+            label {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 14px;
+                letter-spacing: 1px;
+                color: #999;
+                padding: 10px;
+                pointer-events: none;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background-color: $blue;
+            }
+        }
+        input[type='submit'] {
+            padding: 10px 30px;
+            background: $gradient-bg;
+            color: #fff;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 50%;
+            position: relative;
+            &:hover {
+                transform: scale(96%);
+            }
+        }
+    }
+}
+
+// Responsive
+// ==> Small Screen <==
+@media (max-width:991px) {
+    .discount {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:767px) {
+    .discount {
+        .form-box {
+            .input-container {
+                width: 80%;
+                label {
+                    font-size: 11px;
+                }
+            }
+            input[type='submit'] {
+                width: 80%;
+            }
+        }
+    }
+}

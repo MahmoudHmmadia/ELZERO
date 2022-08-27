@@ -1,0 +1,148 @@
+@use '../Colors/colors'as*;
+@use '../Mixins/grid-template'as*;
+@use '../Mixins/text'as*;
+.features {
+    .container {
+        .features__boxes {
+            @include grid (300px);
+            gap: 40px;
+            .box {
+                background-color: #fff;
+                border-radius: 8px;
+                overflow: hidden;
+                text-align: center;
+                box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+                .image-container {
+                    margin-bottom: 20px;
+                    position: relative;
+                    overflow: hidden;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: 0px;
+                        left: -10px;
+                        border-style: solid;
+                        border-width: 0px 0px 170px 500px;
+                        border-color: transparent transparent white transparent;
+                        z-index: 1;
+                        transition: .3s all ease-in-out;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: .6;
+                    }
+                }
+                .title {
+                    margin-bottom: 40px;
+                    position: relative;
+                    font-weight: 900;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 40%;
+                        left: 50%;
+                        height: 5px;
+                        bottom: -20px;
+                        transform: translateX(-50%);
+                    }
+                }
+                .info {
+                    @include text;
+                    margin-bottom: 20px;
+                }
+                button {
+                    padding: 15px 35px;
+                    margin-bottom: 20px;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    background-color: #fff;
+                    position: relative;
+                    z-index: 1;
+                    &::before,
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 100%;
+                        top: 0;
+                        transition: .3s all ease-in-out;
+                    }
+                    &::before {
+                        left: 0;
+                    }
+                    &::after {
+                        right: 0;
+                    }
+                }
+                &.yellow {
+                    .image-container::after {
+                        background-color: $yellow;
+                    }
+                    .title::before {
+                        background-color: $yellow;
+                    }
+                    button {
+                        border: 1px solid $yellow;
+                        color: $yellow;
+                        &::after,
+                        &::before {
+                            background-color: $yellow
+                        }
+                    }
+                }
+                &.green {
+                    .image-container::after {
+                        background-color: $feature-2;
+                    }
+                    .title::before {
+                        background-color: $feature-2;
+                    }
+                    button {
+                        border: 1px solid $feature-2;
+                        color: $feature-2;
+                        &::after,
+                        &::before {
+                            background-color: $feature-2
+                        }
+                    }
+                }
+                &.red {
+                    .image-container::after {
+                        background-color: $feature-1;
+                    }
+                    .title::before {
+                        background-color: $feature-1;
+                    }
+                    button {
+                        border: 1px solid $feature-1;
+                        color: $feature-1;
+                        &::after,
+                        &::before {
+                            background-color: $feature-1
+                        }
+                    }
+                }
+                &:hover {
+                    .image-container::before {
+                        border-width: 170px 500px 170px 0;
+                    }
+                    button {
+                        color: #fff;
+                        &::after,
+                        &::before {
+                            width: 100%;
+                            z-index: -1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
